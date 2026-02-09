@@ -1,4 +1,5 @@
 import Link from "next/link";
+import MegaMenu from "./components/layout/MegaMenu";
 
 function Icon({ path, className = "w-6 h-6" }: { path: string; className?: string }) {
   return (
@@ -30,28 +31,7 @@ export default function Home() {
   return (
     <div className="min-h-screen bg-gray-50 dark:bg-black text-gray-900 dark:text-gray-100 selection:bg-blue-500 selection:text-white">
       {/* Navigation */}
-      <nav className="fixed top-0 w-full z-50 bg-white/80 dark:bg-black/80 backdrop-blur-md border-b border-gray-200 dark:border-gray-800">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-center h-16">
-            <div className="flex items-center gap-2">
-              <div className="w-8 h-8 bg-blue-600 rounded-lg flex items-center justify-center">
-                <Icon path={icons.book} className="w-5 h-5 text-white" />
-              </div>
-              <span className="font-bold text-xl tracking-tight">Damascus Institute</span>
-            </div>
-            <div className="hidden md:flex items-center space-x-8">
-              <Link href="#" className="text-sm font-medium hover:text-blue-600 dark:hover:text-blue-400 transition-colors">About</Link>
-              <Link href="#" className="text-sm font-medium hover:text-blue-600 dark:hover:text-blue-400 transition-colors">Academics</Link>
-              <Link href="#" className="text-sm font-medium hover:text-blue-600 dark:hover:text-blue-400 transition-colors">Contact</Link>
-            </div>
-            <div>
-              <button className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-full text-sm font-medium transition-all shadow-lg shadow-blue-600/20">
-                System Access
-              </button>
-            </div>
-          </div>
-        </div>
-      </nav>
+      <MegaMenu />
 
       {/* Hero Section */}
       <section className="relative pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden">
@@ -184,6 +164,93 @@ export default function Home() {
                 </div>
               </div>
               <div className="absolute inset-0 bg-gradient-to-tr from-blue-600 to-purple-600 rounded-2xl blur-3xl opacity-20 -z-10 transform translate-y-4 translate-x-4"></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Stats Section */}
+      <section className="py-20 bg-blue-600 dark:bg-blue-900 overflow-hidden relative">
+        <div className="absolute top-0 left-0 w-64 h-64 bg-white/10 rounded-full blur-3xl -ml-20 -mt-20"></div>
+        <div className="absolute bottom-0 right-0 w-96 h-96 bg-purple-500/20 rounded-full blur-3xl -mr-20 -mb-20"></div>
+
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center text-white">
+            {[
+              { value: "500+", label: "Active Users" },
+              { value: "30+", label: "Academic Tables" },
+              { value: "99.9%", label: "System Uptime" },
+              { value: "60%", label: "Faster Load Times" },
+            ].map((stat, i) => (
+              <div key={i} className="p-4">
+                <div className="text-4xl md:text-5xl font-bold mb-2">{stat.value}</div>
+                <div className="text-blue-100 font-medium">{stat.label}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* How It Works */}
+      <section className="py-24 bg-gray-50 dark:bg-zinc-900/50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl font-bold mb-4">Streamlined Academic Workflow</h2>
+            <p className="text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
+              Our system simplifies complex administrative tasks into three easy steps.
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-8">
+            {[
+              { step: "01", title: "Registration", desc: "Admins register students and assign courses with role-based security.", color: "blue" },
+              { step: "02", title: "Engagement", desc: "Teachers upload materials and grades, while students access content instantly.", color: "purple" },
+              { step: "03", title: "Analytics", desc: "Real-time reporting on performance and attendance for data-driven decisions.", color: "emerald" },
+            ].map((item, i) => (
+              <div key={i} className="relative p-8 bg-white dark:bg-zinc-900 rounded-3xl border border-gray-200 dark:border-zinc-800 shadow-sm hover:shadow-xl transition-shadow">
+                <div className={`text-6xl font-bold text-${item.color}-100 dark:text-${item.color}-900/20 absolute top-4 right-4`}>{item.step}</div>
+                <h3 className="text-xl font-bold mb-3 relative z-10">{item.title}</h3>
+                <p className="text-gray-600 dark:text-gray-400 relative z-10">{item.desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Testimonials */}
+      <section className="py-24">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <h2 className="text-3xl font-bold mb-12 text-center">Trusted by the Faculty</h2>
+          <div className="grid md:grid-cols-2 gap-8">
+            <div className="p-8 rounded-3xl bg-gradient-to-br from-gray-50 to-gray-100 dark:from-zinc-900 dark:to-zinc-800/50 border border-gray-200 dark:border-zinc-800">
+              <div className="flex gap-1 text-yellow-500 mb-4">
+                {[1, 2, 3, 4, 5].map(i => <Icon key={i} path="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" className="w-5 h-5 fill-current" />)}
+              </div>
+              <p className="text-lg text-gray-700 dark:text-gray-300 italic mb-6">
+                "The database query optimization reduced our page load times by 60%. It's incredibly fast and reliable."
+              </p>
+              <div className="flex items-center gap-4">
+                <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center text-blue-600 font-bold">D</div>
+                <div>
+                  <div className="font-bold">Dr. Hassan</div>
+                  <div className="text-sm text-gray-500">Head of IT Dept</div>
+                </div>
+              </div>
+            </div>
+            <div className="p-8 rounded-3xl bg-gradient-to-br from-gray-50 to-gray-100 dark:from-zinc-900 dark:to-zinc-800/50 border border-gray-200 dark:border-zinc-800">
+              <div className="flex gap-1 text-yellow-500 mb-4">
+                {[1, 2, 3, 4, 5].map(i => <Icon key={i} path="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" className="w-5 h-5 fill-current" />)}
+              </div>
+              <p className="text-lg text-gray-700 dark:text-gray-300 italic mb-6">
+                "Managing student grades used to take days. Now I can input scores for my entire class in minutes."
+              </p>
+              <div className="flex items-center gap-4">
+                <div className="w-12 h-12 bg-purple-100 rounded-full flex items-center justify-center text-purple-600 font-bold">S</div>
+                <div>
+                  <div className="font-bold">Sarah Yasmin</div>
+                  <div className="text-sm text-gray-500">Senior Lecturer</div>
+                </div>
+              </div>
             </div>
           </div>
         </div>

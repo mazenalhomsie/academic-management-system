@@ -31,6 +31,7 @@ export default function TeacherLayout({
         { label: 'My Subjects', href: '/teacher/subjects', icon: icons.book },
         { label: 'Grade Input', href: '/teacher/grades', icon: icons.edit },
         { label: 'Students', href: '/teacher/students', icon: icons.users },
+        { label: 'Profile', href: '/teacher/profile', icon: icons.users }, // Using users icon as placeholder or find a better user icon if available
     ];
 
     return (
