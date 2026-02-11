@@ -17,6 +17,8 @@ export const metadata: Metadata = {
   description: "A comprehensive academic management system for Damascus Institute, serving students, teachers, and administration.",
 };
 
+import Providers from "./providers";
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -27,7 +29,7 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        {children}
+        <Providers>{children}</Providers>
       </body>
     </html>
   );

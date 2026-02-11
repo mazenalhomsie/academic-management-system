@@ -85,9 +85,9 @@ export default function MegaMenu() {
 
                     {/* CTA */}
                     <div className="z-50">
-                        <button className="bg-blue-600 hover:bg-blue-700 text-white px-5 py-2 rounded-full text-sm font-medium transition-all shadow-lg shadow-blue-600/20">
+                        <Link href="/login" className="bg-blue-600 hover:bg-blue-700 text-white px-5 py-2 rounded-full text-sm font-medium transition-all shadow-lg shadow-blue-600/20">
                             System Access
-                        </button>
+                        </Link>
                     </div>
                 </div>
             </div>
